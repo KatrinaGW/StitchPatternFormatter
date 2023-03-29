@@ -1,11 +1,13 @@
 package pattern_printer;
 
+import java.util.ArrayList;
+
 public class PatternFormatter {
-    public String getPatternString(String input) {
-        Stitch[][] stitchConversion;
+    public String getPatternString(String input, Stitches stitches) {
+        Stitch startingStitch;
 
         try {
-            stitchConversion = convertInputToSymbols(input);
+            startingStitch = convertInputToSymbols(input, stitches);
         } catch (UnknownStitchException e) {
             throw e;
         }
@@ -13,10 +15,22 @@ public class PatternFormatter {
         return "";
     }
 
-    private Stitch[][] convertInputToSymbols(String input) {
+    private Stitch convertInputToSymbols(String input, Stitches stitches) {
         String[] spacedInput = input.trim().split("\\s+");
+        Stitch headStitch = null;
+        Stitch currentStitch = null;
 
-        return null;
+        for(String s : spacedInput){
+            if(headStitch == null){
+                headStitch = stitches.getStitchByNameOrThrow(s);
+                currentStitch = headStitch;
+            }else{
+                currentStitch.setNext(stitches.getStitchByNameOrThrow(s));
+                currentStitch = currentStitch.getNext();
+            }
+        }
+
+        return headStitch;
     }
 
 }
