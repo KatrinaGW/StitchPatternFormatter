@@ -1,0 +1,9 @@
+public enum constants{
+    TURN("turn");
+ 
+    private String textInput;
+ 
+    Environment(String textInput) {
+        this.textInput = textInput;
+    }
+}
