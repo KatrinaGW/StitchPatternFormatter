@@ -1,18 +1,7 @@
 package pattern_printer;
-public abstract class Stitch{
-    private String symbol;
-    private String name;
+public interface Stitch{
+    public abstract String getName();
 
-    public void setSymbol(String newSymbol){
-        this.symbol = newSymbol;
-    }
-
-    public String getName(){
-        return this.name;
-    }
-
-    public String getSymbol(){
-        return this.symbol;
-    }
+    public abstract String getSymbol();
 
 }

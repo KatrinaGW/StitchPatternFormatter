@@ -1,8 +1,5 @@
 package pattern_printer;
 
-import java.util.regex.Pattern;
-
-import org.checkerframework.checker.units.qual.g;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -13,11 +10,21 @@ public class PatternFormatterTest {
 
     @Test
     public void getPatternStringTest(){
-        String testString = "a b c";
+        String testString = "a b ";
         PatternFormatter patternFormatter = getTestPatternFormatter();
-        StitchGlossary mockStitchGlossary = Mockito.mock(StitchGlossary.class);
+        StitchGlossary testPattern = new StitchGlossary();
 
-        patternFormatter.getPatternString(testString, mockStitchGlossary);
+        StitchType first = new StitchType("a", "FirstSymbol");
+        StitchType second = new StitchType("b", "Second Symbol");
+
+        testPattern.addStitchOrThrow(first);
+        testPattern.addStitchOrThrow(second);
+
+        String result = patternFormatter.getPatternString(testString, testPattern);
+
+        System.out.println(result);
+
+        assert(true);
     }
     
 }

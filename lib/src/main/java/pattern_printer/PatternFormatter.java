@@ -7,7 +7,7 @@ public class PatternFormatter {
         Stitch startingStitch;
 
         try {
-            startingStitch = convertInputToSymbols(input, stitches);
+            startingStitch = convertInputToStitches(input, stitches);
         } catch (UnknownStitchException e) {
             throw e;
         }
@@ -15,17 +15,23 @@ public class PatternFormatter {
         return "";
     }
 
-    private Stitch convertInputToSymbols(String input, StitchGlossary stitches) {
+    private String convertStitchesToString(StitchNode startingStitch){
+
+    }
+
+    private Stitch convertInputToStitches(String input, StitchGlossary stitchTypes) {
         String[] spacedInput = input.trim().split("\\s+");
-        Stitch headStitch = null;
-        Stitch currentStitch = null;
+        StitchNode headStitch = null;
+        StitchNode currentStitch = null;
+        Stitch stitchType;
 
         for(String s : spacedInput){
+            stitchType = stitchTypes.getStitchByNameOrThrow(s);
             if(headStitch == null){
-                headStitch = stitches.getStitchByNameOrThrow(s);
+                headStitch = new StitchNode(stitchType, null, null);
                 currentStitch = headStitch;
             }else{
-                currentStitch.setNext(stitches.getStitchByNameOrThrow(s));
+                currentStitch.setNext(new StitchNode(stitchType, null, currentStitch));
                 currentStitch = currentStitch.getNext();
             }
         }
