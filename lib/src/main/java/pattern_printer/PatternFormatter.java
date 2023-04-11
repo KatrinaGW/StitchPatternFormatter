@@ -3,7 +3,7 @@ package pattern_printer;
 import java.util.ArrayList;
 
 public class PatternFormatter {
-    public String getPatternString(String input, Stitches stitches) {
+    public String getPatternString(String input, StitchGlossary stitches) {
         Stitch startingStitch;
 
         try {
@@ -15,7 +15,7 @@ public class PatternFormatter {
         return "";
     }
 
-    private Stitch convertInputToSymbols(String input, Stitches stitches) {
+    private Stitch convertInputToSymbols(String input, StitchGlossary stitches) {
         String[] spacedInput = input.trim().split("\\s+");
         Stitch headStitch = null;
         Stitch currentStitch = null;

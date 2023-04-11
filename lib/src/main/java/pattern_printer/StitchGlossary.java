@@ -1,10 +1,10 @@
 package pattern_printer;
 import java.util.HashMap;
 
-public class Stitches {
+public class StitchGlossary {
     private HashMap<String, Stitch> stitches;
 
-    public Stitches(){
+    public StitchGlossary(){
         this.stitches = new HashMap<>();
     }
 
