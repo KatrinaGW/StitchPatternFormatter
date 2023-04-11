@@ -8,7 +8,12 @@ public class StitchGlossary {
 
     public StitchGlossary(){
         this.stitches = new HashMap<>();
-        this.stitches.put(Constants.TURN.name, new TurningStitch());
+        this.stitches.put(Constants.TURN.name, new TurningStitch(Constants.TURN.name));
+    }
+
+    public StitchGlossary(String turningStitchSymbol){
+        this.stitches = new HashMap<>();
+        this.stitches.put(Constants.TURN.name, new TurningStitch(turningStitchSymbol));
     }
 
     public void addStitchOrThrow(Stitch stitch){

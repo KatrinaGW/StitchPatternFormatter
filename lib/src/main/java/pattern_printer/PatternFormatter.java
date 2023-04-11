@@ -2,9 +2,11 @@ package pattern_printer;
 
 import java.util.ArrayList;
 
+import pattern_printer.values.Constants;
+
 public class PatternFormatter {
     public String getPatternString(String input, StitchGlossary stitches) {
-        Stitch startingStitch;
+        StitchNode startingStitch;
 
         try {
             startingStitch = convertInputToStitches(input, stitches);
@@ -12,14 +14,26 @@ public class PatternFormatter {
             throw e;
         }
 
-        return "";
+        return convertStitchesToString(startingStitch);
     }
 
     private String convertStitchesToString(StitchNode startingStitch){
+        String strPattern = "";
 
+        StitchNode currentStitch = startingStitch;
+
+        while(currentStitch!=null){
+            strPattern = String.format("%s%s ", strPattern, currentStitch.getSymbol());
+            if(currentStitch.getName().equals(Constants.TURN.name)){
+                strPattern = String.format("%s\n", strPattern);
+            }
+            currentStitch = currentStitch.getNext();
+        }
+
+        return strPattern;
     }
 
-    private Stitch convertInputToStitches(String input, StitchGlossary stitchTypes) {
+    private StitchNode convertInputToStitches(String input, StitchGlossary stitchTypes) {
         String[] spacedInput = input.trim().split("\\s+");
         StitchNode headStitch = null;
         StitchNode currentStitch = null;

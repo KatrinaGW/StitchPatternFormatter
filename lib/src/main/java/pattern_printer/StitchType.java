@@ -18,10 +18,6 @@ public class StitchType implements Stitch{
         return symbol;
     }
 
-    public void setName(String newName){
-        this.name = newName;
-    }
-
     public void setSymbol(String newSymbol){
         this.symbol = newSymbol;
     }

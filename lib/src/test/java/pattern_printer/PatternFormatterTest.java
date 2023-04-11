@@ -10,12 +10,12 @@ public class PatternFormatterTest {
 
     @Test
     public void getPatternStringTest(){
-        String testString = "a b ";
+        String testString = "a b turn a";
         PatternFormatter patternFormatter = getTestPatternFormatter();
         StitchGlossary testPattern = new StitchGlossary();
 
-        StitchType first = new StitchType("a", "FirstSymbol");
-        StitchType second = new StitchType("b", "Second Symbol");
+        StitchType first = new StitchType("a", "!");
+        StitchType second = new StitchType("b", "?");
 
         testPattern.addStitchOrThrow(first);
         testPattern.addStitchOrThrow(second);
@@ -24,7 +24,7 @@ public class PatternFormatterTest {
 
         System.out.println(result);
 
-        assert(true);
+        assert(result.equals(String.format("! ? turn \n! ", null)));
     }
     
 }
