@@ -65,6 +65,19 @@ public class CircularStitchNodeIteratorTest {
     }
 
     @Test
+    public void nextWrapTwiceTest() {
+        testStitchNodeIterator.placeIterator(0, head);
+        testStitchNodeIterator.next();
+        testStitchNodeIterator.next();
+        assertEquals(tail, testStitchNodeIterator.next());
+        assertEquals(3, testStitchNodeIterator.getPreviousPos());
+        assertEquals(0, testStitchNodeIterator.getNextPos());
+        assertEquals(head, testStitchNodeIterator.next());
+        assertEquals(0, testStitchNodeIterator.getPreviousPos());
+        assertEquals(1, testStitchNodeIterator.getNextPos());
+    }
+
+    @Test
     public void previousBasicTest(){
         testStitchNodeIterator.placeIterator(0, head);
         assertEquals(head, testStitchNodeIterator.previous());

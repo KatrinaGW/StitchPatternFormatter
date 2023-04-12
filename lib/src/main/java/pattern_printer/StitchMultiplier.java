@@ -3,22 +3,24 @@ package pattern_printer;
 public class StitchMultiplier {
 
     public static StitchNode multiplyStitchSequence(int multiplier, StitchNode startOfSequence){
-        StitchNode head;
         int counter = 0;
-        StitchNode currentStitch = startOfSequence;
         CircularStitchNodeIterator circularStitchNodeIterator = new CircularStitchNodeIterator();
-        StitchNode temp;
 
         circularStitchNodeIterator.placeIteratorBeforeHead(startOfSequence);
 
-        while(counter < multiplier){
-            //currentStitch
+        StitchNode currentStitch = new StitchNode(circularStitchNodeIterator.next().getStitchType(), null, null);
+        if(circularStitchNodeIterator.getNextPos()==0){
+            counter++;
         }
 
+        while(counter < multiplier){
+            currentStitch.setNext(new StitchNode(circularStitchNodeIterator.next().getStitchType(), null, currentStitch));
+            currentStitch = currentStitch.getNext();
+            if(circularStitchNodeIterator.getNextPos()==0){
+                counter++;
+            }
+        }
 
-
-        return null;
+        return currentStitch;
     }
-
-    
 }

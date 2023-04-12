@@ -1,14 +1,18 @@
 package pattern_printer;
 
 public class StitchNode implements Stitch{
-    private Stitch stitchType;
+    private StitchType stitchType;
     private StitchNode next;
     private StitchNode previous;
 
-    public StitchNode(Stitch baseType, StitchNode next, StitchNode previous){
+    public StitchNode(StitchType baseType, StitchNode next, StitchNode previous){
         this.stitchType = baseType;
         this.next = next;
         this.previous = previous;
+    }
+    
+    public StitchType getStitchType(){
+        return stitchType;
     }
 
     public String getName(){

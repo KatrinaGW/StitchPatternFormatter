@@ -6,7 +6,7 @@ import pattern_printer.exceptions.UnknownStitchException;
 import pattern_printer.values.Constants;
 
 public class StitchGlossary {
-    private HashMap<String, Stitch> stitches;
+    private HashMap<String, StitchType> stitches;
 
     public StitchGlossary(){
         this.stitches = new HashMap<>();
@@ -18,7 +18,7 @@ public class StitchGlossary {
         this.stitches.put(Constants.TURN.name, new TurningStitch(turningStitchSymbol));
     }
 
-    public void addStitchOrThrow(Stitch stitch){
+    public void addStitchOrThrow(StitchType stitch){
         if(stitches.containsKey(stitch.getName().toLowerCase())){
             throw new StitchExistsException();
         }
@@ -26,8 +26,8 @@ public class StitchGlossary {
         this.stitches.put(stitch.getName(), stitch);
     }
 
-    public Stitch getStitchByNameOrThrow(String name){
-        Stitch stitch; 
+    public StitchType getStitchByNameOrThrow(String name){
+        StitchType stitch; 
         if(stitches.containsKey(name.toLowerCase())){
             stitch = stitches.get(name);
         }else{

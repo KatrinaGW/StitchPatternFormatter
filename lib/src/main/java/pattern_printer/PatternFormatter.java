@@ -36,7 +36,7 @@ public class PatternFormatter {
         String[] spacedInput = input.trim().split("\\s+");
         StitchNode headStitch = null;
         StitchNode currentStitch = null;
-        Stitch stitchType;
+        StitchType stitchType;
 
         for(String s : spacedInput){
             stitchType = stitchTypes.getStitchByNameOrThrow(s);
