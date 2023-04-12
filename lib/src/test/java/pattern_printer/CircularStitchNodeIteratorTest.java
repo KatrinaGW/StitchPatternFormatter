@@ -6,14 +6,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class StitchNodeIteratorTest {
+public class CircularStitchNodeIteratorTest {
     private StitchNode head;
     private StitchNode second;
     private StitchNode third;
     private StitchNode tail;
     private StitchType stitchType;
+    private CircularStitchNodeIterator testStitchNodeIterator;
 
-    private void setMockSequence(){
+    private void setMockSequence() {
         stitchType = new StitchType("Lilo", ":)");
         head = new StitchNode(stitchType, null, null);
         second = new StitchNode(stitchType, null, null);
@@ -29,39 +30,50 @@ public class StitchNodeIteratorTest {
     }
 
     @BeforeEach
-    void initTestStitches(){
+    void initTestStitches() {
         setMockSequence();
+        testStitchNodeIterator = new CircularStitchNodeIterator();
     }
 
     @Test
-    public void getNextCircularThrowsTest(){
-        StitchNodeIterator testStitchNodeIterator = new StitchNodeIterator();
-
+    public void nextThrowsTest() {
         assertThrows(IllegalArgumentException.class, () -> {
-            testStitchNodeIterator.nextCircular();
+            testStitchNodeIterator.next();
         });
     }
 
     @Test
-    public void getNextCircularBasicTest(){
-        StitchNodeIterator testStitchNodeIterator = new StitchNodeIterator();
-
+    public void nextBasicTest() {
         testStitchNodeIterator.placeIterator(0, head);
 
-        assertEquals(second, testStitchNodeIterator.nextCircular());
+        assertEquals(second, testStitchNodeIterator.next());
         assertEquals(1, testStitchNodeIterator.getPreviousPos());
     }
 
     @Test
-    public void getNextCircularWrapTest(){
-        StitchNodeIterator testStitchNodeIterator = new StitchNodeIterator();
-
+    public void nextWrapTest() {
         testStitchNodeIterator.placeIterator(0, head);
-        testStitchNodeIterator.nextCircular();
-        testStitchNodeIterator.nextCircular();
-        testStitchNodeIterator.nextCircular();
-        assertEquals(head, testStitchNodeIterator.nextCircular());
+        testStitchNodeIterator.next();
+        testStitchNodeIterator.next();
+        assertEquals(tail, testStitchNodeIterator.next());
+        assertEquals(3, testStitchNodeIterator.getPreviousPos());
+        assertEquals(head, testStitchNodeIterator.next());
         assertEquals(0, testStitchNodeIterator.getPreviousPos());
     }
-    
+
+    @Test
+    public void previousBasicTest(){
+        testStitchNodeIterator.placeIterator(0, head);
+        assertEquals(head, testStitchNodeIterator.previous());
+        assertEquals(3, testStitchNodeIterator.getPreviousPos());
+    }
+
+    @Test
+    public void previousWrapsTest(){
+        testStitchNodeIterator.placeIterator(0, head);
+        testStitchNodeIterator.previous();
+        assertEquals(tail, testStitchNodeIterator.previous());
+        assertEquals(2, testStitchNodeIterator.getPreviousPos());
+    }
+
 }
