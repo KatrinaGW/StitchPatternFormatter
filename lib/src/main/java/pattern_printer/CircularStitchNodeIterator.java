@@ -6,6 +6,7 @@ public class CircularStitchNodeIterator {
     private StitchNode head;
     private StitchNode tail;
     private int previousPos;
+    private int nextPos;
     private int lastIndex;
 
     public void placeIterator(int previousPos, StitchNode previous) {
@@ -15,13 +16,22 @@ public class CircularStitchNodeIterator {
         this.next = head.getNext();
     }
 
-    public void placeIteratorBeforeHead(int tailIndex, StitchNode head, StitchNode tail){
+    public void placeIteratorBeforeHead(StitchNode head){
+        this.head = head;
+        this.next = head;
+        this.previousPos = -1;
+        this.nextPos = 0;
+        this.next = head;
+    }
+
+    public void placeIteratorBeforeHeadWithTail(int tailIndex, StitchNode head, StitchNode tail){
         this.head = head;
         this.previous = tail;
         this.tail = tail;
         this.previousPos = tailIndex;
         this.next = head;
         this.lastIndex = tailIndex;
+        this.nextPos = 0;
     }
 
     public StitchNode next() {
@@ -33,12 +43,20 @@ public class CircularStitchNodeIterator {
             previous = next;
             next = next.getNext();
             previousPos++;
+
+            if(next==null){
+                nextPos = 0;
+            }else{
+                nextPos=previousPos+1;
+            }
+
         } else {
             tail = previous;
             previous = head;
             next = head.getNext();
             lastIndex = previousPos;
             previousPos = 0;
+            nextPos = 1;
         }
 
         return previous;
@@ -55,6 +73,7 @@ public class CircularStitchNodeIterator {
             }
             next = tail;
             previous = tail.getPrevious();
+            nextPos = lastIndex;
             previousPos = lastIndex-1;
         }else{
             next = previous;
@@ -64,9 +83,11 @@ public class CircularStitchNodeIterator {
                     findTail();
                 }
                 previous = tail;
+                nextPos = 0;
                 previousPos = lastIndex;
             }else{
                 previous = previous.getPrevious();
+                nextPos = previousPos;
                 previousPos--;
             }
         }
@@ -88,6 +109,10 @@ public class CircularStitchNodeIterator {
 
     public int getPreviousPos() {
         return previousPos;
+    }
+
+    public int getNextPos(){
+        return nextPos;
     }
 
 }

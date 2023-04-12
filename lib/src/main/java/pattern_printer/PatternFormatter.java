@@ -1,8 +1,5 @@
 package pattern_printer;
 
-import java.util.ArrayList;
-import java.util.Stack;
-
 import pattern_printer.exceptions.UnknownStitchException;
 import pattern_printer.values.Constants;
 

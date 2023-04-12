@@ -48,6 +48,7 @@ public class CircularStitchNodeIteratorTest {
 
         assertEquals(second, testStitchNodeIterator.next());
         assertEquals(1, testStitchNodeIterator.getPreviousPos());
+        assertEquals(2, testStitchNodeIterator.getNextPos());
     }
 
     @Test
@@ -57,8 +58,10 @@ public class CircularStitchNodeIteratorTest {
         testStitchNodeIterator.next();
         assertEquals(tail, testStitchNodeIterator.next());
         assertEquals(3, testStitchNodeIterator.getPreviousPos());
+        assertEquals(0, testStitchNodeIterator.getNextPos());
         assertEquals(head, testStitchNodeIterator.next());
         assertEquals(0, testStitchNodeIterator.getPreviousPos());
+        assertEquals(1, testStitchNodeIterator.getNextPos());
     }
 
     @Test
@@ -66,6 +69,7 @@ public class CircularStitchNodeIteratorTest {
         testStitchNodeIterator.placeIterator(0, head);
         assertEquals(head, testStitchNodeIterator.previous());
         assertEquals(3, testStitchNodeIterator.getPreviousPos());
+        assertEquals(0, testStitchNodeIterator.getNextPos());
     }
 
     @Test
@@ -74,6 +78,6 @@ public class CircularStitchNodeIteratorTest {
         testStitchNodeIterator.previous();
         assertEquals(tail, testStitchNodeIterator.previous());
         assertEquals(2, testStitchNodeIterator.getPreviousPos());
+        assertEquals(3, testStitchNodeIterator.getNextPos());
     }
-
 }
