@@ -12,7 +12,7 @@ Currently, this project is only runnable through the command line. The end goal 
 There is no main function yet. Everything has been verified through unit tests. 
 Most of the basic backend features are finished. 
 
-Remaining backend work before main function can be worked on: 
-Connecting the multiplier to the pattern formatter
-Identify a loop
+Remaining backend work before main function can be worked on:\
+Connecting the multiplier to the pattern formatter\
+Identify a loop\
 Prevent usage of constants as stitch names
