@@ -1,7 +1,8 @@
 package pattern_printer.values;
 
 public enum Constants{
-    TURN("turn");
+    TURN("turn"),
+    REP_START_SYMBOL("*");
  
     public final String name;
  

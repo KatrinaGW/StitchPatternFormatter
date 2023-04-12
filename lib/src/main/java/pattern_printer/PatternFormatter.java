@@ -1,7 +1,9 @@
 package pattern_printer;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
+import pattern_printer.exceptions.UnknownStitchException;
 import pattern_printer.values.Constants;
 
 public class PatternFormatter {
@@ -52,5 +54,21 @@ public class PatternFormatter {
 
         return headStitch;
     }
+
+    // private int handleRepetition(String[] spacedInput, int i, StitchNode currentStitch, StitchGlossary stitchTypes){
+    //     Stack<StitchNode> reps = new Stack<>();
+    //     StitchNode currentRepHead;
+    //     int numStarts = 1;
+
+    //     currentRepHead = new StitchNode(stitchTypes.getStitchByNameOrThrow(spacedInput[i]), null, null);
+    //     i++;
+
+    //     // while(numStarts>0){
+    //     //     if(!spacedInput[i].equals(Constants.REP_START_SYMBOL)){
+    //     //         currentRep+=spacedInput[i]
+    //     //     }
+    //     // }
+
+    // }
 
 }

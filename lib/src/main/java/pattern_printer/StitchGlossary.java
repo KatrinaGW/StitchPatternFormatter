@@ -1,6 +1,8 @@
 package pattern_printer;
 import java.util.HashMap;
 
+import pattern_printer.exceptions.StitchExistsException;
+import pattern_printer.exceptions.UnknownStitchException;
 import pattern_printer.values.Constants;
 
 public class StitchGlossary {

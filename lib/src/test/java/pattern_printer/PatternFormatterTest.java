@@ -1,7 +1,6 @@
 package pattern_printer;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 public class PatternFormatterTest {
     private PatternFormatter getTestPatternFormatter(){
@@ -21,8 +20,6 @@ public class PatternFormatterTest {
         testPattern.addStitchOrThrow(second);
 
         String result = patternFormatter.getPatternString(testString, testPattern);
-
-        System.out.println(result);
 
         assert(result.equals(String.format("! ? turn \n! ", null)));
     }

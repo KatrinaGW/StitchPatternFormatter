@@ -1,3 +1,3 @@
-package pattern_printer;
+package pattern_printer.exceptions;
 public class StitchExistsException extends IllegalArgumentException{
 }
