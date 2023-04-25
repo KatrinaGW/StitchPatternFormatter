@@ -2,13 +2,19 @@ package pattern_printer;
 
 public class StitchMultiplier {
 
-    public static StitchNode multiplyStitchSequence(int multiplier, StitchNode startOfSequence){
+    public static StitchNode multiplyStitchSequence(int multiplier, StitchNode startOfSequence, StitchNode previousHead){
         int counter = 0;
         CircularStitchNodeIterator circularStitchNodeIterator = new CircularStitchNodeIterator();
 
         circularStitchNodeIterator.placeIteratorBeforeHead(startOfSequence);
 
         StitchNode currentStitch = new StitchNode(circularStitchNodeIterator.next().getStitchType(), null, null);
+
+        if(previousHead!=null){
+            previousHead.setNext(currentStitch);
+            currentStitch.setPrevious(previousHead);
+        }
+
         if(circularStitchNodeIterator.getNextPos()==0){
             counter++;
         }

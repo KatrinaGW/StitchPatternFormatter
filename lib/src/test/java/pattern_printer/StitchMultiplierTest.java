@@ -41,8 +41,35 @@ public class StitchMultiplierTest {
     }
 
     @Test
-    public void multiplyStitchSequence(){
-        StitchNode result = StitchMultiplier.multiplyStitchSequence(2, head);
+    public void multiplyStitchSequenceTest(){
+        StitchType previousHeadType = new StitchType("Previous Head", "?");
+        StitchNode previousHead = new StitchNode(previousHeadType, null, null);
+        StitchNode result = StitchMultiplier.multiplyStitchSequence(2, head, previousHead);
+
+        assertEquals(tail.getStitchType(), result.getStitchType());
+
+        StitchNode iterator = result.getPrevious();
+
+        assertEquals(iterator.getStitchType(), thirdStitchType);
+        iterator = iterator.getPrevious();
+        assertEquals(iterator.getStitchType(), secondStitchType);
+        iterator = iterator.getPrevious();
+        assertEquals(iterator.getStitchType(), headStitchType);
+        iterator = iterator.getPrevious();
+        assertEquals(iterator.getStitchType(), tailStitchType);
+        iterator = iterator.getPrevious();
+        assertEquals(iterator.getStitchType(), thirdStitchType);
+        iterator = iterator.getPrevious();
+        assertEquals(iterator.getStitchType(), secondStitchType);
+        iterator = iterator.getPrevious();
+        assertEquals(iterator.getStitchType(), headStitchType);
+        iterator = iterator.getPrevious();
+        assertEquals(previousHead, iterator);
+    }
+
+    @Test
+    public void multiplyStitchSequenceNullPreviousHeadTest(){
+        StitchNode result = StitchMultiplier.multiplyStitchSequence(2, head, null);
 
         assertEquals(tail.getStitchType(), result.getStitchType());
 
