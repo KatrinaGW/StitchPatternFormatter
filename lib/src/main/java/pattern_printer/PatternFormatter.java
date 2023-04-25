@@ -55,6 +55,8 @@ public class PatternFormatter {
         String s;
         StitchType stitchType;
 
+        previousHeads.push(previousHead);
+
         while(numInProgressReps>0){
             s = spacedInput[currentIndex];
 
@@ -62,7 +64,7 @@ public class PatternFormatter {
                 if(isDigit(spacedInput[currentIndex+1])){
                     if(numInProgressReps<1){
                         throw new IllegalArgumentException("End of repetition symbol received when no repetition"+
-                        "was in progress");
+                        " was in progress");
                     }
 
                     numInProgressReps--;
@@ -112,7 +114,7 @@ public class PatternFormatter {
         while(i<spacedInput.length){
             s = spacedInput[i];
             if(s.equals(Constants.REP_START_END_SYMBOL.name)){
-                Pair<StitchNode, Integer> repetitionResult = handleRepetition(currentStitch, spacedInput, i, stitchTypes);
+                Pair<StitchNode, Integer> repetitionResult = handleRepetition(currentStitch, spacedInput, i + 1, stitchTypes);
                 currentStitch = repetitionResult.getFirst();
                 i = repetitionResult.getSecond();                
             }else{
