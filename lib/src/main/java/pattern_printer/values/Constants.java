@@ -2,7 +2,7 @@ package pattern_printer.values;
 
 public enum Constants{
     TURN("turn"),
-    REP_START_SYMBOL("*");
+    REP_START_END_SYMBOL("*");
  
     public final String name;
  
