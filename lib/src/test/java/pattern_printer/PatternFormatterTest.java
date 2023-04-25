@@ -29,8 +29,54 @@ public class PatternFormatterTest {
         String result = patternFormatter.getPatternString(testString, testPattern);
 
         assertTrue(result.equals(". ! ? ! ? | "));
+    }
 
-        assertTrue(true);
+    @Test
+    public void getPatternStringMultiRepsTest(){
+        StitchType head = new StitchType("head", ".");
+        StitchType first = new StitchType("a", "!");
+        StitchType second = new StitchType("b", "?");
+        StitchType third = new StitchType("c", "&");
+        StitchType tail = new StitchType("tail", "|");
+
+        PatternFormatter patternFormatter = getTestPatternFormatter();
+        StitchGlossary testPattern = new StitchGlossary();
+
+        String testString = "head b a c turn * a b * c a * 3 turn * 2 b b tail";
+
+        testPattern.addStitchOrThrow(head);
+        testPattern.addStitchOrThrow(first);
+        testPattern.addStitchOrThrow(second);
+        testPattern.addStitchOrThrow(third);
+        testPattern.addStitchOrThrow(tail);
+
+        String result = patternFormatter.getPatternString(testString, testPattern);
+
+        assertTrue(result.equals(String.format(". ? ! & turn \n! ? & ! & ! & ! turn \n! ? & ! & ! & ! turn \n? ? | ", null)));
+    }
+
+    @Test
+    public void getPatternStringEntireRepetition(){
+        StitchType head = new StitchType("head", ".");
+        StitchType first = new StitchType("a", "!");
+        StitchType second = new StitchType("b", "?");
+        StitchType third = new StitchType("c", "&");
+        StitchType tail = new StitchType("tail", "|");
+
+        PatternFormatter patternFormatter = getTestPatternFormatter();
+        StitchGlossary testPattern = new StitchGlossary();
+
+        String testString = "* head a b c tail turn * 2";
+
+        testPattern.addStitchOrThrow(head);
+        testPattern.addStitchOrThrow(first);
+        testPattern.addStitchOrThrow(second);
+        testPattern.addStitchOrThrow(third);
+        testPattern.addStitchOrThrow(tail);
+
+        String result = patternFormatter.getPatternString(testString, testPattern);
+
+        assertTrue(result.equals(String.format(". ! ? & | turn \n. ! ? & | turn \n", null)));
     }
 
     @Test

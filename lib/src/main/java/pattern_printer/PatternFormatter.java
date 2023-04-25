@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 import org.apache.commons.math3.util.Pair;
 
 import pattern_printer.exceptions.UnknownStitchException;
+import pattern_printer.helpers.StitchNodeHelpers;
 import pattern_printer.values.Constants;
 
 public class PatternFormatter {
@@ -116,7 +117,11 @@ public class PatternFormatter {
             if(s.equals(Constants.REP_START_END_SYMBOL.name)){
                 Pair<StitchNode, Integer> repetitionResult = handleRepetition(currentStitch, spacedInput, i + 1, stitchTypes);
                 currentStitch = repetitionResult.getFirst();
-                i = repetitionResult.getSecond();                
+                i = repetitionResult.getSecond(); 
+
+                if(headStitch == null){
+                    headStitch = StitchNodeHelpers.getHead(currentStitch);
+                }
             }else{
                 stitchType = stitchTypes.getStitchByNameOrThrow(s);
                 if(headStitch == null){

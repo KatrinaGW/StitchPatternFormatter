@@ -1,6 +1,6 @@
 package pattern_printer;
 
-public class CircularStitchNodeIterator {
+public class CircularStitchNodeIterator implements StitchNodeIterator{
     private StitchNode previous;
     private StitchNode next;
     private StitchNode head;
@@ -105,6 +105,32 @@ public class CircularStitchNodeIterator {
         }
         this.tail = iterator;
         this.lastIndex = index;
+    }
+
+    private void findHead(){
+        if(head!=null){
+            StitchNode iterator = previous;
+
+            while(iterator.getPrevious()!=null){
+                iterator=iterator.getPrevious();
+            }
+
+            head = iterator;
+        }
+    }
+
+    public StitchNode getHead(){
+        if(head == null){
+            findHead();
+        }
+        return head;
+    }
+
+    public StitchNode getTail(){
+        if(tail == null){
+            findTail();
+        }
+        return tail;
     }
 
     public int getPreviousPos() {
