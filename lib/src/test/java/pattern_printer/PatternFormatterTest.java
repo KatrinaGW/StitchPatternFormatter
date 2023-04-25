@@ -32,7 +32,7 @@ public class PatternFormatterTest {
 
 
     private PatternFormatter getTestPatternFormatter(){
-        return new PatternFormatter();
+        return new PatternFormatter(new StrInputToStitchesConverter());
     }
 
     @Test
