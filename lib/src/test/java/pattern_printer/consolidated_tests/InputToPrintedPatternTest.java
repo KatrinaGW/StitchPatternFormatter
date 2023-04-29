@@ -5,12 +5,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import pattern_printer.PatternFormatter;
-import pattern_printer.StitchGlossary;
-import pattern_printer.StitchToStringConverter;
-import pattern_printer.StitchType;
-import pattern_printer.StrInputToStitchesConverter;
-import pattern_printer.values.Constants;
+import pattern_printer.domain.entities.StitchGlossary;
+import pattern_printer.domain.entities.StitchType;
+import pattern_printer.domain.providers.PatternFormatter;
+import pattern_printer.domain.providers.StitchToStringConverter;
+import pattern_printer.domain.providers.StrInputToStitchesConverter;
 
 public class InputToPrintedPatternTest {
     StitchType head;

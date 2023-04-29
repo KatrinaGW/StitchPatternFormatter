@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import pattern_printer.StitchGlossary;
-import pattern_printer.StitchType;
-import pattern_printer.exceptions.StitchExistsException;
+import pattern_printer.domain.entities.StitchGlossary;
+import pattern_printer.domain.entities.StitchType;
+import pattern_printer.domain.entities.exceptions.StitchExistsException;
 
 public class StitchGlossaryTest {
     private StitchGlossary getStitchGlossary(){

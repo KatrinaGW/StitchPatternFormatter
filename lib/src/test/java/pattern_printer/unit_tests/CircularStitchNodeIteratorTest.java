@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import pattern_printer.CircularStitchNodeIterator;
-import pattern_printer.StitchNode;
-import pattern_printer.StitchType;
+import pattern_printer.domain.entities.CircularStitchNodeIterator;
+import pattern_printer.domain.entities.StitchNode;
+import pattern_printer.domain.entities.StitchType;
 
 public class CircularStitchNodeIteratorTest {
     private StitchNode head;

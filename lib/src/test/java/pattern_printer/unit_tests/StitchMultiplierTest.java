@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import pattern_printer.StitchMultiplier;
-import pattern_printer.StitchNode;
-import pattern_printer.StitchType;
+import pattern_printer.domain.entities.StitchNode;
+import pattern_printer.domain.entities.StitchType;
+import pattern_printer.domain.providers.StitchMultiplier;
 
 public class StitchMultiplierTest {
     private StitchNode head;

@@ -11,12 +11,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import pattern_printer.PatternFormatter;
-import pattern_printer.StitchGlossary;
-import pattern_printer.StitchNode;
-import pattern_printer.StitchToStringConverter;
-import pattern_printer.StrInputToStitchesConverter;
-import pattern_printer.exceptions.UnknownStitchException;
+import pattern_printer.domain.entities.StitchGlossary;
+import pattern_printer.domain.entities.StitchNode;
+import pattern_printer.domain.entities.exceptions.UnknownStitchException;
+import pattern_printer.domain.providers.PatternFormatter;
+import pattern_printer.domain.providers.StitchToStringConverter;
+import pattern_printer.domain.providers.StrInputToStitchesConverter;
 
 public class PatternFormatterTest {
     private StitchToStringConverter mockStitchToStringConverter;
