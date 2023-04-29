@@ -4,8 +4,11 @@ import pattern_printer.exceptions.UnknownStitchException;
 
 public class PatternFormatter {
     private StrInputToStitchesConverter strInputToStitchesConverter;
+    private StitchToStringConverter stitchToStringConverter;
 
-    public PatternFormatter(StrInputToStitchesConverter strInputToStitchesConverter){
+    public PatternFormatter(StrInputToStitchesConverter strInputToStitchesConverter, 
+    StitchToStringConverter stitchToStringConverter){
+        this.stitchToStringConverter = stitchToStringConverter;
         this.strInputToStitchesConverter = strInputToStitchesConverter;
     }
 
@@ -18,7 +21,7 @@ public class PatternFormatter {
             throw e;
         }
 
-        return StitchToStringConverter.convertStitchesToString(startingStitch);
+        return stitchToStringConverter.convertStitchesToString(startingStitch);
     }
 
 }

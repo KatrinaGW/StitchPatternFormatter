@@ -1,11 +1,17 @@
-package pattern_printer;
+package pattern_printer.consolidated_tests;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class PatternFormatterTest {
+import pattern_printer.PatternFormatter;
+import pattern_printer.StitchGlossary;
+import pattern_printer.StitchToStringConverter;
+import pattern_printer.StitchType;
+import pattern_printer.StrInputToStitchesConverter;
+
+public class InputToPrintedPatternTest {
     StitchType head;
     StitchType first;
     StitchType second;
@@ -32,7 +38,7 @@ public class PatternFormatterTest {
 
 
     private PatternFormatter getTestPatternFormatter(){
-        return new PatternFormatter(new StrInputToStitchesConverter());
+        return new PatternFormatter(new StrInputToStitchesConverter(), new StitchToStringConverter());
     }
 
     @Test

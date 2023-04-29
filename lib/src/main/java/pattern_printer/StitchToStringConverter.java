@@ -3,7 +3,7 @@ package pattern_printer;
 import pattern_printer.values.Constants;
 
 public class StitchToStringConverter {
-    public static String convertStitchesToString(StitchNode startingStitch){
+    public String convertStitchesToString(StitchNode startingStitch){
         String strPattern = "";
 
         StitchNode currentStitch = startingStitch;
