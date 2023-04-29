@@ -1,5 +1,8 @@
 package pattern_printer.application;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 import pattern_printer.domain.entities.StitchGlossary;
 import pattern_printer.domain.providers.PatternFormatter;
 import pattern_printer.domain.providers.StitchToStringConverter;
@@ -43,5 +46,5 @@ public class ApplicationContext {
     public StitchGlossary getStitchGlossary(){
         return this.stitchGlossary;
     }
-    
+
 }
