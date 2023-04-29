@@ -10,6 +10,7 @@ import pattern_printer.StitchGlossary;
 import pattern_printer.StitchToStringConverter;
 import pattern_printer.StitchType;
 import pattern_printer.StrInputToStitchesConverter;
+import pattern_printer.values.Constants;
 
 public class InputToPrintedPatternTest {
     StitchType head;
@@ -43,7 +44,6 @@ public class InputToPrintedPatternTest {
 
     @Test
     public void getPatternStringWithOneRepTest(){
-
         String testString = "head * a b * 2 tail";
 
         PatternFormatter patternFormatter = getTestPatternFormatter();

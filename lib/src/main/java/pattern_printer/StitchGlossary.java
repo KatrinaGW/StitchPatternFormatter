@@ -19,7 +19,7 @@ public class StitchGlossary {
     }
 
     public void addStitchOrThrow(StitchType stitch){
-        if(stitches.containsKey(stitch.getName().toLowerCase())){
+        if(stitches.containsKey(stitch.getName().toLowerCase()) || Constants.containsName(stitch.getName())){
             throw new StitchExistsException();
         }
 

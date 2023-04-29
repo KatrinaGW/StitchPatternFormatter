@@ -10,4 +10,16 @@ public enum Constants{
     private Constants(String constantName) {
         this.name = constantName;
     }
+
+    public static boolean containsName(String nameToCheck){
+        boolean contains = false;
+        int i = 0;
+
+        while(i < values().length && !contains){
+            contains = values()[i].name.equals(nameToCheck);
+            i++;
+        }
+
+        return contains;
+    }
 }
